@@ -58,21 +58,4 @@ for i=nx:nx:nx*ny
 end
 %% Solution
 T = FDM\RHS;
-T_mat = zeros(ny+2,nx+2);
-T_mat(end,1:end) = BC_Top;
-T_mat(1,1:end) = BC_Bottom;
-T_mat(1:end,end) = BC_Right;
-T_mat(1:end,1) = BC_Left;
-T_mat(end,1) = (BC_Top + BC_Left)/2;
-T_mat(end,end) = (BC_Top + BC_Right)/2;
-T_mat(1,1) = (BC_Bottom + BC_Left)/2;
-T_mat(1,end) = (BC_Bottom + BC_Right)/2;
-for i=1:ny
-    T_mat(ny + 2 -i,2:nx+1) = T((i - 1)*ny + 1:i*ny);
-end
-for i=nx+1:-1:2
-    for j=2:ny+1
-         fprintf('\t %.2f',T_mat(i,j));
-    end
-    fprintf('\n')
-end
+T
